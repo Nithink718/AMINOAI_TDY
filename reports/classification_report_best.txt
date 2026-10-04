@@ -1,0 +1,11 @@
+              precision    recall  f1-score   support
+
+     defense       0.88      0.85      0.87       189
+      enzyme       0.68      0.87      0.76       192
+  regulatory       0.69      0.81      0.74       216
+  structural       0.96      0.82      0.88       201
+   transport       0.90      0.64      0.75       202
+
+    accuracy                           0.80      1000
+   macro avg       0.82      0.80      0.80      1000
+weighted avg       0.82      0.80      0.80      1000

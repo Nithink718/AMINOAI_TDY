@@ -1,0 +1,17 @@
+# Machine Learning Models
+models/*.joblib
+models/*.pkl
+
+# Datasets
+data/raw/*.gz
+data/raw/*.txt
+data/raw/*.csv
+data/processed/*.csv
+data/reference/*.npz
+data/reference/*.joblib
+data/reference/*.csv
+
+# Python
+__pycache__/
+*.pyc
+.env

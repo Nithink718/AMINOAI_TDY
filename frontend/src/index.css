@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #FFFFFF;
+    --bg-subtle: #FAFAFB;
+    --surface: #FFFFFF;
+    --surface-muted: #F5F5F7;
+    --border: #ECECF1;
+    --border-strong: #DCDCE4;
+
+    --text: #0F0F14;
+    --text-2: #4A4A57;
+    --text-3: #8A8A99;
+
+    --primary-50: #F5F3FF;
+    --primary-100: #EDE9FE;
+    --primary-200: #DDD6FE;
+    --primary-300: #C4B5FD;
+    --primary-400: #A78BFA;
+    --primary-500: #8B5CF6;
+    --primary-600: #7C3AED;
+    --primary-700: #6D28D9;
+    --primary-800: #5B21B6;
+
+    --success: #16A34A;
+    --success-bg: #F0FDF4;
+    --warning: #D97706;
+    --warning-bg: #FFFBEB;
+    --danger: #DC2626;
+    --danger-bg: #FEF2F2;
+    --info: #2563EB;
+    --info-bg: #EFF6FF;
+  }
+
+  body {
+    @apply bg-bg text-text antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "cv11", "ss01";
+    font-variant-numeric: tabular-nums;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .class-enzyme { @apply text-[#7C3AED] bg-[#F5F3FF]; }
+  .class-transport { @apply text-[#0EA5E9] bg-[#F0F9FF]; }
+  .class-structural { @apply text-[#F59E0B] bg-[#FFFBEB]; }
+  .class-regulatory { @apply text-[#10B981] bg-[#ECFDF5]; }
+  .class-defense { @apply text-[#F43F5E] bg-[#FFF1F2]; }
+
+  .prop-hydrophobic { @apply bg-[#7C3AED]/10 text-text; }
+  .prop-polar { @apply bg-[#0EA5E9]/10 text-text; }
+  .prop-positive { @apply bg-[#2563EB]/10 text-text; }
+  .prop-negative { @apply bg-[#DC2626]/10 text-text; }
+
+  /* Removed old dark mode classes, relying entirely on Tailwind classes combined with CSS variables going forward */
+}

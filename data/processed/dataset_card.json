@@ -1,0 +1,52 @@
+{
+    "download_date": "2026-10-04 10:55:02",
+    "enzyme.tsv.gz": {
+        "expected_count": 255537,
+        "uniprot_release": "2026_03"
+    },
+    "transport.tsv.gz": {
+        "expected_count": 55219,
+        "uniprot_release": "2026_03"
+    },
+    "structural.tsv.gz": {
+        "expected_count": 6766,
+        "uniprot_release": "2026_03"
+    },
+    "regulatory.tsv.gz": {
+        "expected_count": 25797,
+        "uniprot_release": "2026_03"
+    },
+    "defense.tsv.gz": {
+        "expected_count": 5231,
+        "uniprot_release": "2026_03"
+    },
+    "human_disease.tsv.gz": {
+        "expected_count": 5341,
+        "uniprot_release": "2026_03"
+    },
+    "human_sequences.tsv.gz": {
+        "expected_count": 20431,
+        "uniprot_release": "2026_03"
+    },
+    "raw_counts": {
+        "enzyme": 255537,
+        "transport": 55219,
+        "regulatory": 25797,
+        "structural": 6766,
+        "defense": 5231
+    },
+    "dropped_ambiguous_proteins": 9527,
+    "dropped_conflicting_sequences": 0,
+    "dropped_exact_sequence_duplicates": 49845,
+    "final_counts": {
+        "enzyme": 4000,
+        "transport": 4000,
+        "structural": 4000,
+        "regulatory": 4000,
+        "defense": 3736
+    },
+    "split_method": "Random Stratified Split",
+    "split_disclaimer": "random split \u2014 may be optimistic due to sequence homology",
+    "train_size": 15788,
+    "test_size": 3948
+}
