@@ -6,17 +6,18 @@
 
 @layer base {
   :root {
-    --bg: #F8FAFC;
-    --bg-subtle: rgba(241, 245, 249, 0.5);
-    --surface: rgba(255, 255, 255, 0.75);
-    --surface-muted: rgba(255, 255, 255, 0.4);
-    --border: rgba(226, 232, 240, 0.6);
-    --border-strong: rgba(203, 213, 225, 0.8);
+    --bg: #FAFBFE; /* Very soft cool white */
+    --bg-subtle: #F0F4F8;
+    --surface: #FFFFFF;
+    --surface-muted: #F8FAFC;
+    --border: #E2E8F0;
+    --border-strong: #CBD5E1;
 
     --text: #0F172A;
-    --text-2: #334155;
-    --text-3: #64748B;
+    --text-2: #475569;
+    --text-3: #94A3B8;
 
+    /* Sophisticated indigo/violet accent */
     --primary-50: #EEF2FF;
     --primary-100: #E0E7FF;
     --primary-200: #C7D2FE;
@@ -27,86 +28,75 @@
     --primary-700: #4338CA;
     --primary-800: #3730A3;
 
+    /* Semantic accents */
     --success: #059669;
     --success-bg: #D1FAE5;
     --warning: #D97706;
     --warning-bg: #FEF3C7;
     --danger: #DC2626;
     --danger-bg: #FEE2E2;
-    --info: #2563EB;
-    --info-bg: #DBEAFE;
+    --info: #0284C7; /* Cyan/blue */
+    --info-bg: #E0F2FE;
   }
 
   body {
     @apply text-text antialiased;
-    background-color: #F8FAFC;
-    background-image: 
-      radial-gradient(at 0% 0%, hsla(253, 100%, 94%, 1) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, hsla(220, 100%, 93%, 1) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, hsla(333, 100%, 95%, 1) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, hsla(270, 100%, 94%, 1) 0px, transparent 50%);
-    background-attachment: fixed;
+    background-color: var(--bg);
+    /* Extremely subtle noise/grid can be added via pseudo-elements, keep background clean here */
+    background-image: none;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-feature-settings: "cv11", "ss01";
     font-variant-numeric: tabular-nums;
+    /* Smooth scrolling and highly polished feel */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.02em;
+    font-weight: 600;
   }
 }
 
-/* Super Animation Backgrounds */
-@keyframes super-gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-@keyframes blob-float {
-  0% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
-  33% { transform: translate(40px, -60px) scale(1.2) rotate(10deg); }
-  66% { transform: translate(-30px, 40px) scale(0.8) rotate(-10deg); }
-  100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
-}
-.animate-super-bg {
-  background: linear-gradient(-45deg, #050511, #1e0b36, #0f1035, #290a38);
-  background-size: 400% 400%;
-  animation: super-gradient 12s ease infinite;
-}
-.super-blob {
-  animation: blob-float 15s infinite cubic-bezier(0.4, 0, 0.2, 1);
-}
-.super-blob-delay-1 {
-  animation: blob-float 18s infinite cubic-bezier(0.4, 0, 0.2, 1) reverse;
-}
-.super-blob-delay-2 {
-  animation: blob-float 22s infinite cubic-bezier(0.4, 0, 0.2, 1) 2s;
-}
-.dna-mesh {
-  background-image: 
-    radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0, transparent 2px),
-    radial-gradient(circle at center, rgba(139, 92, 246, 0.1) 0, transparent 2px);
-  background-size: 40px 40px, 40px 40px;
-  background-position: 0 0, 20px 20px;
-  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+/* Subtle Scientific Dot Pattern */
+.bg-science-dots {
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 @layer utilities {
   .bg-surface {
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px -8px rgba(15, 23, 42, 0.05);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .bg-surface:hover {
+    box-shadow: 0 8px 30px -10px rgba(15, 23, 42, 0.08);
   }
 
-  .class-enzyme { @apply text-[#7C3AED] bg-[#F5F3FF]; }
-  .class-transport { @apply text-[#0EA5E9] bg-[#F0F9FF]; }
-  .class-structural { @apply text-[#F59E0B] bg-[#FFFBEB]; }
-  .class-regulatory { @apply text-[#10B981] bg-[#ECFDF5]; }
-  .class-defense { @apply text-[#F43F5E] bg-[#FFF1F2]; }
+  /* Refined semantic badges (No heavy borders, minimal) */
+  .class-enzyme { @apply text-[#6366F1] bg-[#EEF2FF]; }
+  .class-transport { @apply text-[#0284C7] bg-[#E0F2FE]; }
+  .class-structural { @apply text-[#D97706] bg-[#FEF3C7]; }
+  .class-regulatory { @apply text-[#059669] bg-[#D1FAE5]; }
+  .class-defense { @apply text-[#E11D48] bg-[#FFE4E6]; }
 
-  .prop-hydrophobic { @apply bg-[#7C3AED]/10 text-text; }
-  .prop-polar { @apply bg-[#0EA5E9]/10 text-text; }
-  .prop-positive { @apply bg-[#2563EB]/10 text-text; }
-  .prop-negative { @apply bg-[#DC2626]/10 text-text; }
+  .prop-hydrophobic { @apply bg-[#EEF2FF] text-[#6366F1]; }
+  .prop-polar { @apply bg-[#E0F2FE] text-[#0284C7]; }
+  .prop-positive { @apply bg-[#F1F5F9] text-[#475569]; }
+  .prop-negative { @apply bg-[#FFE4E6] text-[#E11D48]; }
 }
+
+/* Base animations */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-up {
+  animation: slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 @media print { body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; } }
