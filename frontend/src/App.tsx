@@ -9,7 +9,7 @@ import { ConfidenceBadge } from './components/protein/ConfidenceBadge';
 import { ProbabilityBars } from './components/protein/ProbabilityBars';
 import { ProteinViewer3D } from './components/protein/ProteinViewer3D';
 import { BioAssistant } from './components/chat/BioAssistant';
-import { FileText, Search, Activity, Copy, UploadCloud, Stethoscope, BookOpen, X, Hexagon, Sparkles, Cpu, Layers } from 'lucide-react';
+import { FileText, Search, Activity, Copy, UploadCloud, Stethoscope, BookOpen, X, Hexagon, Sparkles, Cpu, Layers, BarChart3 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, AreaChart, Area } from 'recharts';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import { cn } from './lib/utils';
