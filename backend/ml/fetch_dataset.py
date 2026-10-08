@@ -12,7 +12,7 @@ CLASSES = {
 }
 
 BASE_URL = "https://rest.uniprot.org/uniprotkb/stream"
-MAX_RECORDS_PER_CLASS = 2000
+MAX_RECORDS_PER_CLASS = 4000
 
 def fetch_data(class_name, query):
     print(f"Fetching data for {class_name}...")

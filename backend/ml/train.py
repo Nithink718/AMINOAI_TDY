@@ -8,7 +8,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.model_selection import StratifiedKFold, GridSearchCV
 from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.neural_network import MLPClassifier
 import time
 
 # Required to load the transformer
@@ -42,9 +43,25 @@ def main():
         "RandomForest": {
             "clf": RandomForestClassifier(random_state=42, class_weight="balanced_subsample", n_jobs=-1),
             "params": {
-                "clf__n_estimators": [300, 500],
-                "clf__max_depth": [None, 40],
-                "clf__min_samples_leaf": [1, 2]
+                "clf__n_estimators": [200],
+                "clf__max_depth": [40],
+                "clf__min_samples_leaf": [1]
+            }
+        },
+        "GradientBoosting": {
+            "clf": GradientBoostingClassifier(random_state=42),
+            "params": {
+                "clf__n_estimators": [100],
+                "clf__learning_rate": [0.1],
+                "clf__max_depth": [3]
+            }
+        },
+        "MLP_NeuralNet": {
+            "clf": MLPClassifier(random_state=42, early_stopping=True),
+            "params": {
+                "clf__hidden_layer_sizes": [(100,)],
+                "clf__alpha": [0.001],
+                "clf__learning_rate_init": [0.01]
             }
         }
     }

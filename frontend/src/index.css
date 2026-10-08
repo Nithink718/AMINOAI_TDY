@@ -6,39 +6,46 @@
 
 @layer base {
   :root {
-    --bg: #FFFFFF;
-    --bg-subtle: #FAFAFB;
-    --surface: #FFFFFF;
-    --surface-muted: #F5F5F7;
-    --border: #ECECF1;
-    --border-strong: #DCDCE4;
+    --bg: #F8FAFC;
+    --bg-subtle: rgba(241, 245, 249, 0.5);
+    --surface: rgba(255, 255, 255, 0.75);
+    --surface-muted: rgba(255, 255, 255, 0.4);
+    --border: rgba(226, 232, 240, 0.6);
+    --border-strong: rgba(203, 213, 225, 0.8);
 
-    --text: #0F0F14;
-    --text-2: #4A4A57;
-    --text-3: #8A8A99;
+    --text: #0F172A;
+    --text-2: #334155;
+    --text-3: #64748B;
 
-    --primary-50: #F5F3FF;
-    --primary-100: #EDE9FE;
-    --primary-200: #DDD6FE;
-    --primary-300: #C4B5FD;
-    --primary-400: #A78BFA;
-    --primary-500: #8B5CF6;
-    --primary-600: #7C3AED;
-    --primary-700: #6D28D9;
-    --primary-800: #5B21B6;
+    --primary-50: #EEF2FF;
+    --primary-100: #E0E7FF;
+    --primary-200: #C7D2FE;
+    --primary-300: #A5B4FC;
+    --primary-400: #818CF8;
+    --primary-500: #6366F1;
+    --primary-600: #4F46E5;
+    --primary-700: #4338CA;
+    --primary-800: #3730A3;
 
-    --success: #16A34A;
-    --success-bg: #F0FDF4;
+    --success: #059669;
+    --success-bg: #D1FAE5;
     --warning: #D97706;
-    --warning-bg: #FFFBEB;
+    --warning-bg: #FEF3C7;
     --danger: #DC2626;
-    --danger-bg: #FEF2F2;
+    --danger-bg: #FEE2E2;
     --info: #2563EB;
-    --info-bg: #EFF6FF;
+    --info-bg: #DBEAFE;
   }
 
   body {
-    @apply bg-bg text-text antialiased;
+    @apply text-text antialiased;
+    background-color: #F8FAFC;
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(253, 100%, 94%, 1) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(220, 100%, 93%, 1) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(333, 100%, 95%, 1) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(270, 100%, 94%, 1) 0px, transparent 50%);
+    background-attachment: fixed;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-feature-settings: "cv11", "ss01";
     font-variant-numeric: tabular-nums;
@@ -49,7 +56,48 @@
   }
 }
 
+/* Super Animation Backgrounds */
+@keyframes super-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes blob-float {
+  0% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+  33% { transform: translate(40px, -60px) scale(1.2) rotate(10deg); }
+  66% { transform: translate(-30px, 40px) scale(0.8) rotate(-10deg); }
+  100% { transform: translate(0px, 0px) scale(1) rotate(0deg); }
+}
+.animate-super-bg {
+  background: linear-gradient(-45deg, #050511, #1e0b36, #0f1035, #290a38);
+  background-size: 400% 400%;
+  animation: super-gradient 12s ease infinite;
+}
+.super-blob {
+  animation: blob-float 15s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+.super-blob-delay-1 {
+  animation: blob-float 18s infinite cubic-bezier(0.4, 0, 0.2, 1) reverse;
+}
+.super-blob-delay-2 {
+  animation: blob-float 22s infinite cubic-bezier(0.4, 0, 0.2, 1) 2s;
+}
+.dna-mesh {
+  background-image: 
+    radial-gradient(circle at center, rgba(139, 92, 246, 0.15) 0, transparent 2px),
+    radial-gradient(circle at center, rgba(139, 92, 246, 0.1) 0, transparent 2px);
+  background-size: 40px 40px, 40px 40px;
+  background-position: 0 0, 20px 20px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+}
+
 @layer utilities {
+  .bg-surface {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  }
+
   .class-enzyme { @apply text-[#7C3AED] bg-[#F5F3FF]; }
   .class-transport { @apply text-[#0EA5E9] bg-[#F0F9FF]; }
   .class-structural { @apply text-[#F59E0B] bg-[#FFFBEB]; }
@@ -60,6 +108,5 @@
   .prop-polar { @apply bg-[#0EA5E9]/10 text-text; }
   .prop-positive { @apply bg-[#2563EB]/10 text-text; }
   .prop-negative { @apply bg-[#DC2626]/10 text-text; }
-
-  /* Removed old dark mode classes, relying entirely on Tailwind classes combined with CSS variables going forward */
 }
+@media print { body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; } }

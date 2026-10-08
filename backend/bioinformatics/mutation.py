@@ -1,11 +1,7 @@
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
-from Bio.Align import substitution_matrices
 import numpy as np
 
-try:
-    blosum62 = substitution_matrices.load("BLOSUM62")
-except:
-    blosum62 = None
+blosum62 = None
 
 def get_residue_group(aa):
     hydrophobic = set("AILMFVW")
